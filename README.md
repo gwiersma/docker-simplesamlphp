@@ -22,21 +22,16 @@ be ready to use.
 ``` bash
 git clone https://github.com/jnyryan/docker-simplesamlphp.git
 cd docker-simplesamlphp
-vagrant up
-vagrant ssh
+docker build .
+sudo docker run -d -p 8080:80 -p 8443:443 <image number/dockerhuib repo>
 ```
 
 ## Usage
 
-From the host machine the following ports are forwarded to the Vagrant VM.
-
-- 58080
-- 58443
-
 To get to either the HTTP or HTTPS setup hit the following endpoints:
 
-  - http://localhost:58080/simplesaml
-  - https://localhost:58443/simplesaml
+  - http://<host ip>:8080/simplesaml
+  - https://<host ip>:8443/simplesaml
 
 To access simpleSAMLphp from the browser:
 
