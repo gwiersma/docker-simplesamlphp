@@ -1,17 +1,10 @@
 # docker-simplesamlphp
 
-simpleSAMLphp installed on a vagrant virtual machine and hosted in Docker.
-
 
 ##Introduction
 
 This is plug and play. Run the installation and SimpleSAMLphp will be waiting
 
-## Prerequisites
-
-This setup uses VirtualBox and VagrantUp to instanciate the virtual machines
-  - Install [VirtualBox](https://www.virtualbox.org/)
-  - Install [VagrantUp](http://www.vagrantup.com/)
 
 ## Installation
 
@@ -25,21 +18,6 @@ cd docker-simplesamlphp
 docker build .
 sudo docker run -d -p 8080:80 -p 8443:443 <image number/dockerhuib repo>
 ```
-
-## Usage
-
-To get to either the HTTP or HTTPS setup hit the following endpoints:
-
-  - http://<host ip>:8080/simplesaml
-  - https://<host ip>:8443/simplesaml
-
-To access simpleSAMLphp from the browser:
-
-```
-username: admin
-password: password
-```
-
 
 ---
 
@@ -63,14 +41,16 @@ setup, the details are included if you would like to further develop it.
 Rather than build it yourself, the full container is available on [DockerHub](https://registry.hub.docker.com/u/jnyryan/simplesamlphp/)
 
 ``` bash
-sudo docker pull jnyryan/simplesamlphp
-sudo docker run -d -p 58080:80 -p 58443:443 jnyryan/simplesamlphp
+sudo docker pull <REPO NAME>
+sudo docker run -d -p 8080:80 -p 8443:443 <REPO NAME>
 ```
 
 To access simpleSAMLphp from the host server:
 
 ```
-http://localhost:50081/simplesaml/
+
+  - http://<host ip>:8080/simplesaml
+  - https://<host ip>:8443/simplesaml
 
 username: admin
 password: password
@@ -80,7 +60,7 @@ password: password
 To use your own configs stored on the host in /var/simplesamlphp
 
 ``` bash
-sudo docker run -d -p 58080:80 -p 58443:443 \
+sudo docker run -d -p 8080:80 -p 8443:443 \
 -v /var/simplesamlphp/config/:/var/simplesamlphp/config/ -v /var/simplesamlphp/metadata/:/var/simplesamlphp/metadata/ -v /var/simplesamlphp/cert/:/var/simplesamlphp/cert/ \
 jnyryan/simplesamlphp
 ```˛
